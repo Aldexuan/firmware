@@ -30,13 +30,10 @@
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
-//自动指针层，指针层可以在移动轨迹球时自动启用。
 // Automatically enable the pointer layer when moving the trackball.  See also:
-//触发敏感度也可以调整。值越低，触发越敏感
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
  #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-//旋转角度，改变球的角度 旋转角度仅支持 -127 到 127。
 #undef ROTATIONAL_TRANSFORM_ANGLE
 #define ROTATIONAL_TRANSFORM_ANGLE 90
 //交换x,y数据
@@ -51,7 +48,6 @@
 #undef POINTING_DEVICE_INVERT_X
 //#endif // POINTING_DEVICE_ENABLE
 
-//要反转水平滚动方向，定义CHARYBDIS_DRAGSCROLL_REVERSE_X：
 //#define CHARYBDIS_DRAGSCROLL_REVERSE_X
 //要反转垂直滚动方向（即模仿 macOS“自然”滚动方向），请定义CHARYBDIS_DRAGSCROLL_REVERSE_Y
 #define CHARYBDIS_DRAGSCROLL_REVERSE_Y

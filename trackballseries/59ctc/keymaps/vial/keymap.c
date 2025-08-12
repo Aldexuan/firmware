@@ -21,7 +21,7 @@ enum charybdis_keymap_layers {
 /**
 在这里定义的层，切到该层这个层就变为自动阻击层
 */
-//#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
