@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "47.h"
+#include "47_ctc.h"
 
 // clang-format off
 #ifdef RGB_MATRIX_ENABLE

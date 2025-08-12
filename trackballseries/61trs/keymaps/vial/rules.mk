@@ -1,0 +1,8 @@
+VIA_ENABLE = yes
+VIAL_ENABLE = yes
+VIALRGB_ENABLE = yes
+VIAL_INSECURE = yes
+
+OLED_ENABLE         = yes
+EXTRAKEY_ENABLE     = yes
+WPM_ENABLE = yes

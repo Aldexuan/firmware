@@ -5,8 +5,8 @@
 # BOOTLOADER = rp2040
 
 # RP2040-specific options
-# ALLOW_WARNINGS = yes
-# PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
+ALLOW_WARNINGS = yes
+PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
 
 # Build Options
 #   change yes to no to disable
@@ -30,9 +30,5 @@ SPLIT_KEYBOARD = yes
 
 POINTING_DEVICE_ENABLE = yes # Enable trackball
 POINTING_DEVICE_DRIVER = pmw3360
-# POINTING_DEVICE_DRIVER = pmw3389
 
 SERIAL_DRIVER = vendor
-
-
-

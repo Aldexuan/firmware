@@ -1,0 +1,280 @@
+{
+    "name": "trackball 39",
+    "vendorId": "0x414D",
+    "productId": "0x414E",
+    "lighting": "vialrgb",
+    "matrix": {
+        "rows": 8,
+        "cols": 6
+    },
+    "customKeycodes": [
+        {
+            "title": "Default DPI Increase",
+            "name": "Default DPI Inc",
+            "shortName": "DPI+"
+        },
+        {
+            "title": "Default DPI Decrease",
+            "name": "Default DPI Dec",
+            "shortName": "DPI-"
+        },
+        {
+            "title": "Sniping DPI Increase",
+            "name": "Sniping DPI Inc",
+            "shortName": "Snp+"
+        },
+        {
+            "title": "Sniping DPI Decrease",
+            "name": "Sniping DPI Dec",
+            "shortName": "Snp-"
+        },
+        {
+            "title": "Sniping Momentary",
+            "name": "Sniping MO",
+            "shortName": "Snp"
+        },
+        {
+            "title": "Sniping Toggle",
+            "name": "Sniping TO",
+            "shortName": "SnpT"
+        },
+        {
+            "title": "Drag-scroll Momentary",
+            "name": "Drag-scroll MO",
+            "shortName": "Drg"
+        },
+        {
+            "title": "Drag-scroll Toggle",
+            "name": "Drag-scroll TG",
+            "shortName": "DrgT"
+        },
+        {
+            "title": "Drag-scroll DPI Increase",
+            "name": "Drag-scroll inc",
+            "shortName": "Drg+"
+        },
+        {
+            "title": "Drag-scroll DPI Decrease",
+            "name": "Drag-scroll Decrease",
+            "shortName": "Drg-"
+        },
+        {
+            "title": "Auto-mode Toggle",
+            "name": "Auto-mode TG",
+            "shortName": "ATG"
+        },
+        {
+            "title": "auto pointer layer increase 50ms",
+            "name": "auto pointer layer increase 50ms",
+            "shortName": "A50"
+        },{
+            "title": "auto pointer layer Decrease 50ms",
+            "name": "auto pointer layer Decrease 50ms",
+            "shortName": "A50-"
+        },
+        {
+            "title": "auto pointer layer increase 100ms",
+            "name": "auto pointer layer increase 100ms",
+            "shortName": "A100"
+        },
+        {
+            "title": "AUTO_THRESHOLD",
+            "name": "AUTO_THRESHOLD",
+            "shortName": "ATV"
+        },
+        {
+            "title": "trackball info",
+            "name": "trackball info",
+            "shortName": "TInfo"
+        },
+        {
+            "title": "save auto pointer layer",
+            "name": "save auto pointer layer",
+            "shortName": "T_SAVE"
+        }
+    ],
+    "layouts": {
+        "keymap":[
+  [
+    {
+      "x": 3
+    },
+    "0,3",
+    {
+      "x": 9.75
+    },
+    "4,3"
+  ],
+  [
+    {
+      "y": -0.75,
+      "x": 2
+    },
+    "0,2",
+    {
+      "x": 1
+    },
+    "0,4",
+    {
+      "x": 7.75
+    },
+    "4,4",
+    {
+      "x": 1
+    },
+    "4,2"
+  ],
+  [
+    {
+      "y": -0.75
+    },
+    "0,0",
+    "0,1",
+    {
+      "x": 13.75
+    },
+    "4,1",
+    "4,0"
+  ],
+  [
+    {
+      "y": -0.5,
+      "x": 3
+    },
+    "1,3",
+    {
+      "x": 9.75
+    },
+    "5,3"
+  ],
+  [
+    {
+      "y": -0.75,
+      "x": 2
+    },
+    "1,2",
+    {
+      "x": 1
+    },
+    "1,4",
+    {
+      "x": 7.75
+    },
+    "5,4",
+    {
+      "x": 1
+    },
+    "5,2"
+  ],
+  [
+    {
+      "y": -0.75
+    },
+    "1,0",
+    "1,1",
+    {
+      "x": 13.75
+    },
+    "5,1",
+    "5,0"
+  ],
+  [
+    {
+      "y": -0.5,
+      "x": 3
+    },
+    "2,3",
+    {
+      "x": 9.75
+    },
+    "6,3"
+  ],
+  [
+    {
+      "y": -0.75,
+      "x": 2
+    },
+    "2,2",
+    {
+      "x": 1
+    },
+    "2,4",
+    {
+      "x": 7.75
+    },
+    "6,4",
+    {
+      "x": 1
+    },
+    "6,2"
+  ],
+  [
+    {
+      "y": -0.75
+    },
+    "2,0",
+    "2,1",
+    {
+      "x": 13.75
+    },
+    "6,1",
+    "6,0"
+  ],
+  [
+    {
+      "y": -0.25,
+      "x": 2
+    },
+    "3,2"
+  ],
+  [
+    {
+      "y": -0.75
+    },
+    "3,0",
+    "3,1",
+    {
+      "x": 1.25
+    },
+    "3,3",
+    {
+      "x": 12.5
+    },
+    "7,0"
+  ],
+  [
+    {
+      "r": 10,
+      "y": -1.75,
+      "x": 5
+    },
+    "3,4"
+  ],
+  [
+    {
+      "r": 20,
+      "y": -2,
+      "x": 6.75
+    },
+    "3,5"
+  ],
+  [
+    {
+      "r": -20,
+      "y": 5,
+      "x": 9
+    },
+    "7,5"
+  ],
+  [
+    {
+      "r": -10,
+      "y": -3,
+      "x": 11.5
+    },
+    "7,4"
+  ]
+]
+    }
+}
+

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "47.h"
+#include "44.h"
 
 // clang-format off
 #ifdef RGB_MATRIX_ENABLE
@@ -26,47 +26,40 @@
  *   0   17  34  51  68  85 102           119  136 153  170 187 204 221
  *
  * ╭────────────────────────╮                 ╭────────────────────────╮
- *    3   4   11  12  19  20                     42  41  36  35  29  28       0
+ *    2   3   9  10  17  18                     39  38  33  32  26  25       0
  * ├────────────────────────┤                 ├────────────────────────┤
- *    2   5   10  13  18  21                     43  40  37  34  30  27       13
+ *    1   4   8  11  16  19                     40  37  34  31  27  24       13
  * ├────────────────────────┤                 ├────────────────────────┤
- *    1   6    9  14  17  22                     44  39  38  33  31  26       26
+ *    0   5    7  12  15  20                     42  36  35  30  28  23       26
  * ├────────────────────────┤                 ├────────────────────────┤
- *    0   7    8  15                        46  45               32  25       39
+ *             6  13                        43  42               29         39
  * ╰────────────────────────╯                 ╰────────────────────────╯
-                       16  23 24                                              52
-
- *                     ╰────────────╯ ╰────────────╯
-*
- *
- * Note: the LED config simulates 58 LEDs instead of the actual 56 to prevent
- * confusion when testing LEDs during assembly when handedness is not set
- * correctly.  Those fake LEDs are bound to the physical bottom-left corner.
+                       14  21 22                                              52
  */
 led_config_t g_led_config = { {
     /* Key Matrix to LED index. */
     // Left split.
-    {      3,      4,     11,     12,     19,      20,  NO_LED}, // Num row
-    {      2,      5,     10,     13,     18,      21 , NO_LED}, // Top row
-    {      1,      6,     9,      14,     17,      22 , NO_LED}, // Middle row
-    {      0,      7,     8,      15,     16,      23,  24}, // Bottom row
+    {      2,      3,     9,     10,     17,      18,  NO_LED}, // Num row
+    {      1,      4,     8,     11,     16,      19 , NO_LED}, // Top row
+    {      0,      5,     7,     12,     15,      20 , NO_LED}, // Middle row
+    { NO_LED, NO_LED,     6,     13,     14,      21,  22}, // Bottom row
     // Right split.
-    {     28,     29,       35,         36,         41,      42, NO_LED}, // Num row
-    {     27,     30,       34,         37,         40,      43, NO_LED}, // Top row
-    {     26,     31,       33,         38,         39,      44, NO_LED}, // Middle row
-    {     25,     32,       NO_LED,     NO_LED,     NO_LED,  45, 46 }, // Bottom row
+    {     25,     26,       32,         33,         38,      39, NO_LED}, // Num row
+    {     24,     27,       31,         34,         37,      40, NO_LED}, // Top row
+    {     23,     28,       30,         35,         36,      42, NO_LED}, // Middle row
+    { NO_LED,     29,       NO_LED,     NO_LED,     NO_LED,  42, 43 }, // Bottom row
 }, {
     /* LED index to physical position. */
     // Left split.
-    /* index=0  */ {   0,   39 },   {   0,  26 },   {   0,  13 },   {   0,  0 },  // col 1 (left most)
-    /* index=4  */ {  17,  0 },   {  17,  13 },   {  17,   26 },  {   17,  39 }, // col 2
+    /* index=0  */  {   0,  26 },   {   0,  13 },   {   0,  0 },  // col 1 (left most)
+    /* index=4  */ {  17,  0 },   {  17,  13 },   {  17,   26 }, // col 2
     /* index=8  */ {  34,   39 },   {  34,  26 },   {  34,  13 },   {  34,  0 },
     /* index=12 */ {  51,  0 },   {  51,  13 },   {  51,   26 },  {   51,  39 },
     /* index=16 */ {  68,   52 },   {  68,  30 },   {  68,  15 },   {  68,  5 },
     /* index=16 */ {  85,   5 },   {  85,  15 },   {  85,  30 },   {  85,  55 },
     /* index=20 */ {  102,   58 },
     // Right split.
-    /* index=37 */ { 221,   39 },   { 221,  26 },    { 221,  13 },   { 221,  0 },
+    /* index=37 */ { 221,  26 },    { 221,  13 },   { 221,  0 },
     /* index=41 */ { 204,  0 },    { 204,  13 },   { 204,   26 }, { 204,   39 },
     /* index=45 */ { 187,   26 },   { 187,  13 },    { 187,  0 },
     /* index=49 */ { 170,  0 },   {   170,  13 },{ 170,   26 },
@@ -77,15 +70,15 @@ led_config_t g_led_config = { {
 }, {
     /* LED index to flag. */
     // Left split.
-    /* index=0  */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, // col 1
-    /* index=4  */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, // col 2
+    /* index=0  */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, // col 1
+    /* index=4  */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, // col 2
     /* index=8  */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
     /* index=16 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
     /* index=20 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
     /* index=20 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
     /* index=24 */ LED_FLAG_MODIFIER,
     // Right split.
-    /* index=29 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // col 12
+    /* index=29 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // col 12
     /* index=29 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // col 12
     /* index=33 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,  // col 11
     /* index=37 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,

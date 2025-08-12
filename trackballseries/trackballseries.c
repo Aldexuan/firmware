@@ -26,24 +26,25 @@
 
 
 typedef union {
-    uint8_t raw;
+    uint32_t raw;
     struct {
-        uint16_t pointer_dragscroll_dpi : 9;
-        uint8_t pointer_default_dpi : 4;
-        uint8_t pointer_sniping_dpi : 2;
+        uint16_t pointer_dragscroll_dpi : 9; // 0-511
+        uint8_t pointer_default_dpi : 4; // 16 steps available.
+        uint8_t pointer_sniping_dpi : 2; // 4 steps available.
         bool    is_dragscroll_enabled : 1;
         bool    is_sniping_enabled : 1;
     } __attribute__((packed));
 } charybdis_config_t;
 
 static charybdis_config_t g_charybdis_config = {0};
+//static charybdis_config_t g_charybdis_config;
 
 
 // Fixed DPI for drag-scroll.
 #    ifndef CHARYBDIS_DRAGSCROLL_DPI
 #        define CHARYBDIS_DRAGSCROLL_DPI g_charybdis_config.pointer_dragscroll_dpi
 #    endif // CHARYBDIS_DRAGSCROLL_DPI
-
+//100 6
 #    ifndef CHARYBDIS_DRAGSCROLL_BUFFER_SIZE
 #        define CHARYBDIS_DRAGSCROLL_BUFFER_SIZE 6
 #    endif // !CHARYBDIS_DRAGSCROLL_BUFFER_SIZE
@@ -51,8 +52,9 @@ static charybdis_config_t g_charybdis_config = {0};
 
 
 static void read_charybdis_config_from_eeprom(charybdis_config_t* config) {
-    config->raw                   = eeconfig_read_kb() & 0xff;
-    config->pointer_dragscroll_dpi = 100;
+    config->raw                   = eeconfig_read_kb();
+//    config->raw                   = eeconfig_read_kb() & 0xff;
+//    config->pointer_dragscroll_dpi = 100;
     config->is_dragscroll_enabled = false;
     config->is_sniping_enabled    = false;
 }
@@ -76,6 +78,7 @@ static uint16_t get_pointer_sniping_dpi(charybdis_config_t* config) {
 /** \brief Set the appropriate DPI for the input config. */
 static void maybe_update_pointing_device_cpi(charybdis_config_t* config) {
     if (config->is_dragscroll_enabled) {
+//        pointing_device_set_cpi(CHARYBDIS_DRAGSCROLL_DPI);
         pointing_device_set_cpi(g_charybdis_config.pointer_dragscroll_dpi);
     } else if (config->is_sniping_enabled) {
         pointing_device_set_cpi(get_pointer_sniping_dpi(config));
@@ -264,22 +267,32 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
                 charybdis_set_pointer_sniping_enabled(!charybdis_get_pointer_sniping_enabled());
             }
             break;
+
+
         case POINTER_DRAGSCROLL_DPI_FORWARD:
             if (record->event.pressed) {
-                g_charybdis_config.pointer_dragscroll_dpi += 100;
-                if(g_charybdis_config.pointer_dragscroll_dpi > 500){
-                           g_charybdis_config.pointer_dragscroll_dpi = 100;
-                        }
+                uint16_t new_value = g_charybdis_config.pointer_dragscroll_dpi + 100;
+                if (new_value > 511) { // 确保不超过位域的最大值511
+                    g_charybdis_config.pointer_dragscroll_dpi = 100; // 超过511时重置为100
+                } else if (new_value > 500) {
+                    g_charybdis_config.pointer_dragscroll_dpi = 100; // 达到或超过500时也重置为100
+                } else {
+                    g_charybdis_config.pointer_dragscroll_dpi = new_value; // 正常增加
+                }
                 maybe_update_pointing_device_cpi(&g_charybdis_config);
                 write_charybdis_config_to_eeprom(&g_charybdis_config);
             }
             break;
         case POINTER_DRAGSCROLL_DPI_REVERSE:
             if (record->event.pressed) {
-                g_charybdis_config.pointer_dragscroll_dpi -= 100;
-                if(g_charybdis_config.pointer_dragscroll_dpi > 500){
-                           g_charybdis_config.pointer_dragscroll_dpi = 500;
-                        }
+               uint16_t new_value = g_charybdis_config.pointer_dragscroll_dpi - 100;
+                if (new_value > 511) { // 确保不超过位域的最大值511
+                    g_charybdis_config.pointer_dragscroll_dpi = 500; // 超过511时重置为100
+                } else if (new_value > 500) {
+                    g_charybdis_config.pointer_dragscroll_dpi = 500; // 达到或超过500时也重置为100
+                } else {
+                    g_charybdis_config.pointer_dragscroll_dpi = new_value; // 正常增加
+                }
                 maybe_update_pointing_device_cpi(&g_charybdis_config);
                 write_charybdis_config_to_eeprom(&g_charybdis_config);
             }
@@ -415,3 +428,5 @@ void trackball_oled_info(void) {
     oled_write_ln(count_dragscroll_str, false);
 
     }
+
+
