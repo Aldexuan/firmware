@@ -719,7 +719,7 @@ static void slave_data(void) {
             oled_write("  2  ", false);
             break;
         case LAYER_POINTER:
-            oled_write("3", false);
+            oled_write("Track", false);
             break;
         case LAYER_END:
             oled_write("  4  ", false);
