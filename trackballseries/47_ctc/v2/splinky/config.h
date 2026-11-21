@@ -64,6 +64,3 @@
 #define OLED_TIMEOUT 50000
 #endif
 
-//解决从机休眠后无法唤醒问题
-//#define FORCED_SYNC_THROTTLE_MS 100
-//#define CHARYBDIS_CONFIG_SYNC

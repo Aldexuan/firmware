@@ -54,10 +54,8 @@
 #define SPLIT_OLED_ENABLE
 /* 使用 QMK 提供的分割传输时，确保当前 WPM 在从属设备上可用 */
 #define SPLIT_WPM_ENABLE
-#define OLED_FONT_H "keyboards/charybdis/39/keymaps/vial/glcdfont.c"
+#define OLED_FONT_H "keyboards/trackballseries/39/keymaps/vial/glcdfont.c"
 #define OLED_TIMEOUT 50000
 #endif
 
-//解决从机休眠后无法唤醒问题
-//#define FORCED_SYNC_THROTTLE_MS 100
-#define CHARYBDIS_CONFIG_SYNC
+

@@ -21,10 +21,8 @@ enum charybdis_keymap_layers {
     LAYER_MOUSE,
 };
 
-/**
-在这里定义的层，切到该层这个层就变为自动阻击层
-*/
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
+
+// #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
@@ -48,11 +46,10 @@ typedef union {
     struct {
         uint16_t auto_time: 13;
         uint8_t threshold_value : 3; //
-        bool    is_auto_enabled : 1;  //新加的
-        bool    is_oled_enabled : 1;  //新加的
+        bool    is_auto_enabled : 1;
+        bool    is_oled_enabled : 1;
     };
 } auto_config_t;
-//2的数字范围是从0到3， 4是16位，5是0-31位，6是即0到63。
 static auto_config_t user_config;
 
 void keyboard_post_init_user(void){
@@ -247,8 +244,7 @@ void matrix_scan_user(void) {
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 
-//在图层变化时自动启用狙击模式，切换到LAYER_POINTER指针层启用阻击模式
-//和自动启用阻击模式相关
+
 #ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
@@ -257,7 +253,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
 #endif     // POINTING_DEVICE_ENABLE
 
-//和rgb有关可以不用管
 #ifdef RGB_MATRIX_ENABLE
 // Forward-declare this helper function since it is defined in rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
